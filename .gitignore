@@ -1,17 +1,19 @@
-.env
 # Python
 __pycache__/
 *.pyc
 
-# Virtual env
+# Virtual environment
 venv/
 .env
 
 # Environment variables
 .env.*
 
-# OS
+# OS files
 .DS_Store
 
 # Logs
 *.log
+
+# Database (just in case)
+*.db
