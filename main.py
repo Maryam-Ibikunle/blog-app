@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, Security
 from fastapi.security import HTTPBearer
 from sqlalchemy import select, or_
+from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
 from schemas import UserCreate, UserLogin, Token, PostCreate, PostUpdate, CommentCreate
 from jose import jwt, JWTError
@@ -89,7 +90,7 @@ async def delete_post(id: int, db:AsyncSession=Depends(get_db), current_user:Use
 
 @app.get("/posts", tags=["posts"])
 async def get_posts(author_id: int|None=None, keyword:str|None=None, db:AsyncSession=Depends(get_db)):
-    query = select(Posts)
+    query = select(Posts).options(selectinload(Posts.comments))
     if author_id is not None:
         query = query.where(Posts.author_id == author_id)
     if keyword is not None:
