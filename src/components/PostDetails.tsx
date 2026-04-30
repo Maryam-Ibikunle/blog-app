@@ -36,22 +36,7 @@ export default function PostDetails() {
   const handleSubmitComment = async () => {
     try {
       if (!postId) return;
-      const response = await fetch(
-        `http://127.0.0.1:8000/posts/${postId}/comments`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            content: newComment,
-            post_id: postId,
-          }),
-        }
-      );
 
-      const data = await response.json();
       await fetch(`http://127.0.0.1:8000/posts/${postId}`)
         .then((res) => res.json())
         .then((data) => setPost(data));
