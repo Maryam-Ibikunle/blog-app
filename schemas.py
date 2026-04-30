@@ -2,7 +2,6 @@ from pydantic import BaseModel, EmailStr
 
 
 class UserCreate(BaseModel):
-    id: int
     f_name:str
     l_name:str
     email:EmailStr
@@ -17,17 +16,40 @@ class Token(BaseModel):
     token_type: str
 
 class PostCreate(BaseModel):
-    id:int
     title:str
     content:str
-    author_id:int
+
 
 class PostUpdate(BaseModel):
     title:str
     content:str
 
 class CommentCreate(BaseModel):
+    content: str
+    post_id:int
+
+
+
+class UserOut(BaseModel):
+    id: int
+    f_name: str
+    l_name: str
+    class Config:
+        from_attributes = True
+
+class CommentOut(BaseModel):
     id: int
     content: str
-    user_id: int
-    post_id:int
+    user: UserOut
+    class Config:
+        from_attributes = True
+
+class PostOut(BaseModel):
+    id: int
+    title: str
+    content: str
+    comments: list[CommentOut]
+    author: UserOut
+    class Config:
+        from_attributes = True
+

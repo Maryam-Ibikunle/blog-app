@@ -11,7 +11,7 @@ class Users(Base):
     email = Column(String, unique=True)
     hashed_password = Column(String)
     posts = relationship("Posts", back_populates="author")
-    comments = relationship("Comments", back_populates="users")
+    comments = relationship("Comments", back_populates="user")
 
 class Posts(Base):
     __tablename__ = "posts"
@@ -28,5 +28,6 @@ class Comments(Base):
     content = Column(String)
     user_id = Column(Integer, ForeignKey("users.id"))
     post_id = Column(Integer, ForeignKey("posts.id"))
-    users = relationship("Users", back_populates="comments")
+    user = relationship("Users", back_populates="comments")
     posts = relationship("Posts", back_populates="comments")
+    
