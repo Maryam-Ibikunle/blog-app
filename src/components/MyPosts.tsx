@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 export default function MyPosts() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [editingId, setEditingId] = useState(null);
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   const token = localStorage.getItem("token");
 
@@ -39,7 +39,7 @@ export default function MyPosts() {
   };
 
   // ---------------- DELETE POST ----------------
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: number) => {
     await fetch(`http://127.0.0.1:8000/posts/${id}`, {
       method: "DELETE",
       headers: {
@@ -116,7 +116,7 @@ export default function MyPosts() {
       </div>
 
       {/* ---------------- POSTS LIST ---------------- */}
-      {posts.map((post) => (
+      {posts.map((post: Post) => (
         <div key={post.id} className="border p-4 mb-3 rounded">
           <h2 className="font-bold">{post.title}</h2>
           <p>{post.content}</p>
