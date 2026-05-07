@@ -21,7 +21,8 @@ security = HTTPBearer()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "*"
+        "http://localhost:5173",
+        "https://blog-app-gray-alpha.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],

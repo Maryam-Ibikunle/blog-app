@@ -23,7 +23,7 @@ export default function PostDetails() {
   console.log("TOKEN PAYLOAD:", currentUser);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/posts/${postId}`)
+    fetch(`https://blog-app-o6d9.onrender.com/posts/${postId}`)
       .then((res) => res.json())
       .then((data) => setPost(data))
       .catch((err) => console.error(err));
@@ -37,7 +37,7 @@ export default function PostDetails() {
     try {
       if (!postId) return;
 
-      await fetch(`http://127.0.0.1:8000/posts/${postId}`)
+      await fetch(`https://blog-app-o6d9.onrender.com/posts/${postId}`)
         .then((res) => res.json())
         .then((data) => setPost(data));
       handleAddComment();
@@ -51,7 +51,7 @@ export default function PostDetails() {
       if (!postId) return;
       console.log("comment_id:", comment_id, typeof comment_id);
       await fetch(
-        `http://127.0.0.1:8000/posts/${postId}/comments/${comment_id}`,
+        `https://blog-app-o6d9.onrender.com/posts/${postId}/comments/${comment_id}`,
 
         {
           method: "DELETE",

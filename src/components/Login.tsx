@@ -22,7 +22,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/login", {
+      const res = await fetch("https://blog-app-o6d9.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

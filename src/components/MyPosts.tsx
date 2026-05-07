@@ -10,7 +10,7 @@ export default function MyPosts() {
 
   // ---------------- FETCH MY POSTS ----------------
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/users/me/posts", {
+    fetch("https://blog-app-o6d9.onrender.com/users/me/posts", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -22,7 +22,7 @@ export default function MyPosts() {
 
   // ---------------- CREATE POST ----------------
   const handleCreate = async () => {
-    const res = await fetch("http://127.0.0.1:8000/posts", {
+    const res = await fetch("https://blog-app-o6d9.onrender.com/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export default function MyPosts() {
 
   // ---------------- DELETE POST ----------------
   const handleDelete = async (id: number) => {
-    await fetch(`http://127.0.0.1:8000/posts/${id}`, {
+    await fetch(`https://blog-app-o6d9.onrender.com/posts/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -60,14 +60,17 @@ export default function MyPosts() {
   };
 
   const handleUpdate = async () => {
-    const res = await fetch(`http://127.0.0.1:8000/posts/${editingId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ title, content }),
-    });
+    const res = await fetch(
+      `https://blog-app-o6d9.onrender.com/posts/${editingId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ title, content }),
+      }
+    );
 
     const updated = await res.json();
 
