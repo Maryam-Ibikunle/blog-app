@@ -31,9 +31,9 @@ export default function MyPosts() {
       body: JSON.stringify({ title, content }),
     });
 
-    const newPost = await res.json();
+    const newPost: Post = await res.json();
 
-    setPosts((prev) => [newPost, ...prev]);
+    setPosts((prev: Post[]) => [newPost, ...prev]);
     setTitle("");
     setContent("");
   };

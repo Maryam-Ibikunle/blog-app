@@ -95,12 +95,13 @@ export default function Signup() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
             required
           />
-
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
           >
-            Sign Up
+            {loading ? "Signing up..." : "Sign Up"}
           </button>
         </form>
 
